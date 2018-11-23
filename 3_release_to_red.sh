@@ -12,13 +12,7 @@ REPLICA_COUNT=4
 # New release color will be RED
 RELEASE_COLOR="#FF0000"
 
-# This should really do the following rather than just a hard cut over
-# scale canary to 4
-# scale release to 0
-# label release as to_be_removed
-# label canary as release
-# remove to_be_removed
-
+# This will perform rolling updates on the existing release pods
 helm upgrade --install tweet HttpCanary-0.1.0.tgz \
 	--set deployment[0].track=release \
 	--set deployment[0].color=$RELEASE_COLOR \

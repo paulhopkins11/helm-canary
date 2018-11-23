@@ -84,7 +84,7 @@ http-canary-deployment-release-6fcf77d6f7-f4ph5   1/1       Running   0         
 
 ## 5. Canary back to blue
 
-`> 4_canary_to_blue.sh`
+`> ./4_canary_to_blue.sh`
 
 A single blue canary will now be created
 
@@ -118,3 +118,13 @@ You can see it being called
 
 You can now follow step 1. and return to a full blue release.
 
+## 7. Delete
+
+You can now delete the chart using `> ./delete.sh`
+
+# Futher work
+
+This POC could be extended to cover the following:
+
+* Multiple charts - This will make it more representative of mulitple microservices within one chart being updated.
+* Populating the number of replicas from the existing replica count.
