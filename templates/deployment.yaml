@@ -1,0 +1,33 @@
+{{ $local := . }}
+{{- range $index, $track := .Values.deployment }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: http-canary-deployment-{{$track.track}}
+  labels:
+    app: http-canary
+    color: {{$track.track}}
+    category: microservices
+spec:
+  replicas: {{$track.replicas}}
+  selector:
+    matchLabels:
+      app: http-canary
+      color: {{$track.track}}
+  template:
+    metadata:
+      labels:
+        app: http-canary
+        color: {{$track.track}}
+        category: microservices
+    spec:
+      containers:
+      - name: http-canary-{{$track.track}}
+        image: paulhopkins/http-canary:latest
+        ports:
+        - containerPort: 80
+        command:
+          - "./myapp"
+          - "{{$track.color}}"
+---
+{{ end }}

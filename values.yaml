@@ -1,0 +1,6 @@
+# Default values include a 4 pod release deployment
+
+deployment:
+  - track: release
+    color: "#0000FF"
+    replicas: 4

@@ -1,0 +1,4 @@
+apiVersion: v1
+description: An http server to demonstrate canary deployments
+name: HttpCanary
+version: 0.1.0
